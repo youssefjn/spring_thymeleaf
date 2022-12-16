@@ -1,6 +1,5 @@
 package org.horizonefele.dao;
 
-import java.util.List;
 
 import org.horizonefele.entities.Team;
 import org.springframework.data.domain.Page;
