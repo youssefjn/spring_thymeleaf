@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head> <meta charset="utf-8"/> <title>Teams Management</title>
+
+<link th:href="@{/styles/main.css}" rel="stylesheet" />
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script></head>
+<body>
+<h1> With Thymeleaf </h1>
+
+<div class=container>
+<form action="/teams/search" method="post"> <table> <tr>
+<td>Mot Clé: </td>
+<td> <input type="text" name="motCle" th:value="${motC}"/></td>
+<td><input type="submit" name="action" value="search" /> </td>
+</tr> </table> </form>
+
+</div>
+<table>
+
+<thead>
+
+<tr> <th>REF</th><th>Name</th><th>Budget</th> </tr>
+
+</thead>
+<tr th:each="t:${teams}">
+<td th:text="${t.idTeam}"></td>
+<td th:text="${t.name}"></td>
+<td th:text="${t.budget}"></td>
+<td> <a onclick="return confirm('Please Confirm')"
+th:href="@{/teams/delete(ref=${t.idTeam}, mc=${motC})}"> Delete </a> </td>
+<td> <a th:href="@{/teams/edit(ref=${t.idTeam}, name=${t.name}, budget=${t.budget},
+edit=0, mc=${motC})}">Edit</a> </td>
+</tr>
+
+</table>
+<div class="container">
+<ul class="pagination">
+<li th:class="${pageCourante}==${status.index}?'active':''" th:each="p,status:${pages}">
+<a th:href="@{/teams/search(page=${status.index}, motCle=${motC})}"
+th:text="${status.index}"></a>
+</li>
+</ul>
+</div>
+ </body> </html>

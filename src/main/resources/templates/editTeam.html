@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script></head>
+</head>
+<body>
+<div class="container">
+<h1> Edit Team </h1> <p></p> <p></p>
+
+<form action="/teams/edit" method="get">
+<table>
+<tr> <td>REF</td> <td> <input type="text" name="ref" th:value="${idTeam}"
+readonly/></td> </tr>
+<tr> <td>Name</td> <td> <input type="text" name="name" th:value="${name}"/></td> </tr>
+<tr> <td>Budget</td> <td> <input type="text" name="budget" th:value="${budget}" /></td>
+</tr>
+<tr><td><input type="hidden" name="mc" th:value="${motCle}"/></td><td><input
+type="hidden" name="edit" value="1"/></td></tr>
+<tr><td><input type="submit" name="action" value="save"/></td></tr>
+</table> </form> </div> </body>
